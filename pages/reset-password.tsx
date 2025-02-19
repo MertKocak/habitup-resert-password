@@ -41,7 +41,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await axios.post("https://habitup-backend.onrender.com/reset-password", {
+      const response = await axios.post("https://habitup-backend-v.vercel.app/reset-password", {
         token,
         password,
       });
