@@ -53,7 +53,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-700 via-gray-600 to-black">
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-800 via-gray-700 to-purple-700">
       <div className="bg-white p-8 rounded-xl shadow-xl w-96 max-w-md">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Şifreni Sıfırla</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
