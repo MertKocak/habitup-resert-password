@@ -19,10 +19,9 @@ const ResetPassword = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
       setMessage("Şifreler eşleşmiyor!");
-      console.log(message)
       return;
     }
 
@@ -32,38 +31,53 @@ const ResetPassword = () => {
         password,
       });
       setMessage(response.data.message);
-      console.log(message)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setMessage("Şifre sıfırlama işlemi başarısız oldu.");
-      console.log(message)
     }
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-md w-96">
-        <h2 className="text-xl font-semibold mb-4 text-center">Şifreyi Sıfırla</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col">
-          <input
-            type="password"
-            placeholder="Yeni Şifre"
-            className="w-full p-2 border rounded mb-3"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <input
-            type="password"
-            placeholder="Şifreyi Onayla"
-            className="w-full p-2 border rounded mb-3"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-          />
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
-            Şifreyi Güncelle
-          </button>
+    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-500 via-teal-500 to-green-500">
+      <div className="bg-white p-8 rounded-xl shadow-xl w-96 max-w-md">
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Şifreyi Sıfırla</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <input
+              type="password"
+              placeholder="Yeni Şifre"
+              className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition duration-300"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Şifreyi Onayla"
+              className="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition duration-300"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="w-full py-3 text-white font-semibold bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+            >
+              Şifreyi Güncelle
+            </button>
+          </div>
         </form>
-        {message && <p className="mt-3 text-center text-red-500">{message}</p>}
+        {message && (
+          <p
+            className={`mt-4 text-center text-lg font-semibold ${
+              message.includes("başarısız") ? "text-red-500" : "text-green-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </div>
     </div>
   );
