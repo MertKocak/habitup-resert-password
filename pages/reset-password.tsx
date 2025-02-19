@@ -90,7 +90,7 @@ const ResetPassword = () => {
         {message && (
           <p
             className={`mt-4 text-center text-lg font-semibold ${
-              message.includes("başarısız") ? "text-red-500" : "text-green-500"
+              message.includes("başarısız") ? "text-red-500" : "text-purple-800"
             }`}
           >
             {message}
